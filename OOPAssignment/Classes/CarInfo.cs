@@ -9,8 +9,8 @@ namespace OOPAssignment.Classes
     public class CarInfo
     {
 
-        private Guid carId;
-        private Coordinates coordinates;
+        public Guid carId;
+        public Coordinates coordinates;
 
         public CarInfo(Guid carId, Coordinates coordinates)
         {
@@ -26,6 +26,12 @@ namespace OOPAssignment.Classes
         public Coordinates GetCoordinates()
         {
             return coordinates;
+        }
+
+       public void SetCoordinates(long x,long y)
+        {
+            coordinates.X = x;
+            coordinates.Y = y;
         }
     }
 }

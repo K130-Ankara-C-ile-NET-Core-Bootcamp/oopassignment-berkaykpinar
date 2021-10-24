@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using OOPAssignment.Structs;
 
 namespace OOPAssignment.Interfaces
 {
@@ -10,6 +11,6 @@ namespace OOPAssignment.Interfaces
     {
         void TurnLeft();
         void TurnRight();
-        void Move();
+        void Move(MovementFactor movementFactor);
     }
 }

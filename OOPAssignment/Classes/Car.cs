@@ -10,7 +10,7 @@ using OOPAssignment.Classes;
 
 namespace OOPAssignment.Classes
 {
-    public class Car : ICarCommand,Interfaces.IObservable<CarInfo>
+    public class Car : ICarCommand, Interfaces.IObservable<CarInfo>
     {
         public Guid Id;
         public Coordinates Coordinates;
@@ -18,9 +18,14 @@ namespace OOPAssignment.Classes
         public ISurface Surface;
         private Interfaces.IObserver<CarInfo> Observer;
 
-        
+
         public Car(Coordinates coordinates, Direction direction, ISurface surface)
         {
+            if(coordinates.Equals(null) || direction.Equals(null)|| surface== null)
+            {
+                throw new Exception("Some paramaters are null");
+            } 
+
             Coordinates = coordinates;
             Direction = direction;
             Surface = surface;
@@ -33,55 +38,60 @@ namespace OOPAssignment.Classes
             Notify();
         }
 
-        public void Move()
+        public void Move(MovementFactor movementFactor)
         {
+            movementFactor.XFactor = Coordinates.X;
+            movementFactor.YFactor = Coordinates.Y;
+
             if (Direction == Direction.N)
             {
-                Coordinates.Y = Coordinates.Y++;
-                
+                movementFactor.YFactor++;
+
             }
             if (Direction == Direction.E)
             {
-                Coordinates.X = Coordinates.X++;
+                movementFactor.XFactor++;
             }
             if (Direction == Direction.S)
             {
-                Coordinates.Y = Coordinates.Y--;
+                movementFactor.YFactor--;
             }
             if (Direction == Direction.W)
             {
-                Coordinates.X = Coordinates.X--;
+                movementFactor.XFactor--;
             }
+
+            Coordinates = new Coordinates(movementFactor.XFactor, movementFactor.YFactor);
 
             Notify();
         }
 
         public void Notify()
         {
-            Observer.Update(new CarInfo(Id,Coordinates));
-            
+            Observer.Update(new CarInfo(Id, Coordinates));
+
         }
 
         public void TurnLeft()
         {
-           if( Direction == Direction.N)
+            if (Direction == Direction.N)
             {
                 Direction = Direction.W;
             }
-            if (Direction == Direction.E)
+            else if (Direction == Direction.E)
             {
                 Direction = Direction.N;
             }
-            if (Direction == Direction.S)
+            else if (Direction == Direction.S)
             {
                 Direction = Direction.E;
             }
-            if (Direction == Direction.W)
+            else if (Direction == Direction.W)
             {
                 Direction = Direction.S;
             }
-            
 
+            //Notify();
         }
 
         public void TurnRight()
@@ -89,19 +99,21 @@ namespace OOPAssignment.Classes
             if (Direction == Direction.N)
             {
                 Direction = Direction.E;
+                
             }
-            if (Direction == Direction.E)
+            else if (Direction == Direction.E)
             {
                 Direction = Direction.S;
             }
-            if (Direction == Direction.S)
+            else if (Direction == Direction.S)
             {
                 Direction = Direction.W;
             }
-            if (Direction == Direction.W)
+            else if (Direction == Direction.W)
             {
                 Direction = Direction.N;
             }
+            //  Notify();
         }
     }
 }

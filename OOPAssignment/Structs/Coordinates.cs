@@ -2,8 +2,8 @@
 {
     public struct Coordinates
     {
-        public long X;
-        public long Y;
+        public long X {  get; set; }
+        public long Y {  get; set; }
 
         public Coordinates(long x,long y)
         {

@@ -6,24 +6,15 @@ using System.Threading.Tasks;
 
 namespace OOPAssignment.Structs
 {
-    public readonly struct MovementFactor
+    public struct MovementFactor
     {
-        private readonly int XFactor;
-        private readonly int YFactor;
-
+        public long XFactor {  get; set; }
+        public long YFactor { get; set; }
         public MovementFactor(int xFactor, int yFactor)
         {
             XFactor = xFactor;
             YFactor = yFactor;
         }
 
-        public int getXFactor()
-        {
-            return XFactor;
-        }
-        public int getYFactor()
-        {
-            return YFactor;
-        }
     }
 }

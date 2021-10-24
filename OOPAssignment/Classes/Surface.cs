@@ -14,6 +14,7 @@ namespace OOPAssignment.Classes
         public long Width { get; set; }
 
         public long Height { get; set; }
+
         private List<CarInfo> ObservableCars = new List<CarInfo>();
 
 
@@ -26,7 +27,14 @@ namespace OOPAssignment.Classes
 
         public List<CarInfo> GetObservables()
         {
-            return ObservableCars;
+            List<CarInfo> newObservable = new List<CarInfo>();
+
+            foreach (CarInfo car in ObservableCars)
+            {
+                newObservable.Add(car);
+            }
+
+            return newObservable;
         }
 
         public bool IsCoordinatesInBounds(Coordinates coordinates)
@@ -46,12 +54,6 @@ namespace OOPAssignment.Classes
             var car = ObservableCars.FirstOrDefault(value => (value.GetCoordinates().X == coordinates.X
             && value.GetCoordinates().Y == coordinates.Y));
 
-            foreach(var  carItem in ObservableCars)
-            {
-                Console.WriteLine("X : "+carItem.GetCoordinates().X+" Y "+ carItem.GetCoordinates().Y);
-               
-            }
-
             if (car == null)
             {
                 return true;
@@ -62,12 +64,15 @@ namespace OOPAssignment.Classes
 
         public void Update(CarInfo provider)
         {
-            var car = ObservableCars.FirstOrDefault(value => value.GetGuid() == provider.GetGuid());
+            var car = ObservableCars.FirstOrDefault(value =>
+            value.GetGuid() == provider.GetGuid());
+
+       
+
 
             if (car == null)
             {
-                ObservableCars.Add(provider);
-                Console.WriteLine(ObservableCars.Count);
+                ObservableCars.Add(provider);             
             }
             else
             {

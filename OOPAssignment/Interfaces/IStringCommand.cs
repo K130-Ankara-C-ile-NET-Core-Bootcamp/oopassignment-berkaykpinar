@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OOPAssignment.Interfaces
 {
-    internal interface IStringCommand : ICommand<String>
+    public interface IStringCommand : ICommand<String>
     {
     }
 }
