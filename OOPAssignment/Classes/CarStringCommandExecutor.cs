@@ -23,12 +23,10 @@ namespace OOPAssignment.Classes
                 if(c == 'L')
                 {
                     carCommand.TurnLeft();
-                }
-                if(c == 'R')
+                }else if(c == 'R')
                 {
                     carCommand.TurnRight();
-                }
-                if(c== 'M')
+                }else if(c== 'M')
                 {
                     carCommand.Move();
                 }

@@ -43,7 +43,7 @@ namespace OOPAssignment.Classes
 
         public bool IsCoordinatesEmpty(Coordinates coordinates)
         {
-            var car = ObservableCars.Find(value => (value.GetCoordinates().X == coordinates.X
+            var car = ObservableCars.FirstOrDefault(value => (value.GetCoordinates().X == coordinates.X
             && value.GetCoordinates().Y == coordinates.Y));
 
             foreach(var  carItem in ObservableCars)
@@ -62,11 +62,12 @@ namespace OOPAssignment.Classes
 
         public void Update(CarInfo provider)
         {
-            var car = ObservableCars.Find(value => value.GetGuid() == provider.GetGuid());
+            var car = ObservableCars.FirstOrDefault(value => value.GetGuid() == provider.GetGuid());
 
             if (car == null)
             {
                 ObservableCars.Add(provider);
+                Console.WriteLine(ObservableCars.Count);
             }
             else
             {

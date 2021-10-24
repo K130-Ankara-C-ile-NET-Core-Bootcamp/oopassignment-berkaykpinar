@@ -80,6 +80,7 @@ namespace OOPAssignment.Classes
             {
                 Direction = Direction.S;
             }
+            
 
         }
 
