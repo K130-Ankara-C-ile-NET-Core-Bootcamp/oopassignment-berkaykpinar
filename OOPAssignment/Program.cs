@@ -2,6 +2,10 @@
 using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Threading;
+using OOPAssignment.Classes;
+using OOPAssignment.Interfaces;
+using OOPAssignment.Enums;
+using OOPAssignment.Structs;
 
 namespace OOPAssignment
 {
